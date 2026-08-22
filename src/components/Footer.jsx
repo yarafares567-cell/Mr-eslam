@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { MessageCircle, Send, ArrowUpRight, Share2 } from 'lucide-react'
+import { ArrowUpRight, Heart, Sparkles, Ribbon } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { supabase } from '../lib/supabase'
 
-// Custom SVG Icons for Youtube, Telegram, Facebook to guarantee valid rendering
+// Custom SVG Icons
 function YoutubeIcon(props) {
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
@@ -20,21 +21,12 @@ function FacebookIcon(props) {
   )
 }
 
-function TelegramIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
-      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.562 8.161c-.18.717-.962 4.084-1.362 5.752-.169.706-.433.943-.684.966-.547.05-1.077-.384-1.606-.731-.828-.543-1.295-.881-2.098-1.41-.928-.612-.326-.949.203-1.499.138-.144 2.535-2.325 2.582-2.525.006-.025.01-.119-.045-.168-.055-.049-.136-.032-.195-.019-.083.018-1.408.895-3.974 2.628-.376.258-.716.386-1.021.379-.336-.008-.983-.191-1.464-.347-.59-.192-1.058-.294-1.017-.621.021-.171.258-.346.71-.525 2.784-1.213 4.641-2.013 5.571-2.4 2.648-1.1 3.199-1.292 3.557-1.298.079-.001.255.018.37.112.097.079.124.186.136.262.01.066.021.218.012.338z" />
-    </svg>
-  )
-}
-
 const SOCIALS = [
-  { icon: YoutubeIcon, name: 'يوتيوب', href: 'https://www.youtube.com/channel/UCZmQMG4vx3xncQogurpyCDw' },
-  { icon: FacebookIcon, name: 'فيسبوك', href: 'https://www.facebook.com/profile.php?id=61567028243039' },
+  { icon: YoutubeIcon, name: 'YouTube', href: 'https://www.youtube.com/channel/UCZmQMG4vx3xncQogurpyCDw' },
+  { icon: FacebookIcon, name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61567028243039' },
 ]
 
 export default function Footer() {
-  // رابط لوحة الأدمن يظهر بس لو فيه session حقيقي والـ role بتاعه admin فعلاً
   const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
@@ -67,30 +59,60 @@ export default function Footer() {
   }
 
   return (
-    <footer className="py-12 bg-dodger-950 text-white font-ibm relative overflow-hidden border-t border-dodger-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+    <footer className="py-12 bg-[#1a0815] text-pink-100 font-ibm relative overflow-hidden border-t border-pink-900/60">
+      
+      {/* Decorative Animated Floating Stickers */}
+      <motion.div
+        animate={{ y: [0, -8, 0], rotate: [-10, 10, -10] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-4 left-8 text-2xl pointer-events-none select-none drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] hidden sm:block"
+      >
+        🎀
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, 8, 0], rotate: [5, -5, 5] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+        className="absolute bottom-6 right-12 text-2xl pointer-events-none select-none drop-shadow-[0_0_8px_rgba(244,114,182,0.8)] hidden sm:block"
+      >
+        💖
+      </motion.div>
+
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], rotate: [0, 15, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl pointer-events-none select-none opacity-20 hidden md:block"
+      >
+        ✨
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+          
           {/* Col 1: Brand info */}
-          <div className="space-y-4 text-center md:text-right">
-            <Link to="/" className="inline-flex items-center gap-3">
-              <div className="h-12 w-12 rounded-2xl bg-white text-dodger-900 flex items-center justify-center font-khaled text-2xl font-bold">
-                إ
+          <div className="space-y-4 text-center md:text-left">
+            <Link to="/" className="inline-flex items-center gap-3 group">
+              <div className="h-12 w-12 rounded-2xl bg-gradient-to-tr from-pink-600 via-rose-500 to-pink-400 text-white flex items-center justify-center font-khaled text-2xl font-bold shadow-lg shadow-pink-600/30 group-hover:scale-105 transition duration-300 border border-pink-300/40">
+                Y
               </div>
-              <div>
-                <span className="font-messiri font-bold text-xl block text-white">
-                  مستر إسلام | مدرس رياضيات
+              <div className="text-left">
+                <span className="font-messiri font-bold text-xl block text-white flex items-center gap-1.5">
+                  Yarin <span className="text-xs">🌸</span>
                 </span>
-                <span className="text-xs text-dodger-300">طريقك للتفوق في الرياضيات</span>
+                <span className="text-xs text-pink-300/80">Your path to excellence in mathematics</span>
               </div>
             </Link>
-            <p className="text-xs text-dodger-200 leading-relaxed max-w-sm">
-              منصة تعليمية متخصصة لشرح منهج الرياضيات للمرحلتين الإعدادية والثانوية بأحدث الوسائل التفاعلية.
+            <p className="text-xs text-pink-200/80 leading-relaxed max-w-sm">
+              An interactive educational platform designed to simplify mathematics coursework with modern, engaging lessons.
             </p>
           </div>
 
           {/* Col 2: Social media */}
           <div className="space-y-3 text-center">
-            <p className="text-xs font-bold text-dodger-300">تابعنا على وسائل التواصل الاجتماعي:</p>
+            <p className="text-xs font-bold text-pink-300 flex items-center justify-center gap-1">
+              <span>Follow us on social media</span>
+              <span>✨</span>
+            </p>
             <div className="flex gap-4 justify-center">
               {SOCIALS.map((s) => {
                 const Icon = s.icon
@@ -100,10 +122,10 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-11 h-11 rounded-2xl bg-dodger-900 hover:bg-dodger-700 border border-dodger-800 flex items-center justify-center text-dodger-200 hover:text-white transition shadow-sm"
+                    className="w-11 h-11 rounded-2xl bg-[#2a0f21] hover:bg-pink-900/60 border border-pink-800/80 flex items-center justify-center text-pink-200 hover:text-white transition shadow-md shadow-pink-950/50 hover:scale-105"
                     aria-label={s.name}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-5 h-5 text-pink-400 hover:text-pink-200" />
                   </a>
                 )
               })}
@@ -111,29 +133,34 @@ export default function Footer() {
           </div>
 
           {/* Col 3: CTA */}
-          <div className="space-y-4 text-center md:text-left flex flex-col items-center md:items-end">
-            <h3 className="font-messiri font-bold text-lg text-white">
-              جاهز تبدأ رحلتك في الرياضيات؟
+          <div className="space-y-4 text-center md:text-right flex flex-col items-center md:items-end">
+            <h3 className="font-messiri font-bold text-lg text-white flex items-center gap-1.5">
+              <span>Ready to start learning?</span>
+              <span className="text-sm">💗</span>
             </h3>
             <Link
               to="/register"
-              className="px-6 py-3 rounded-xl bg-[#47C780] hover:bg-[#3db372] text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white font-bold text-sm shadow-lg shadow-pink-600/30 transition flex items-center gap-2 border border-pink-400/30 hover:scale-105"
             >
-              <span>سجّل حسابك الآن مجاناً</span>
+              <span>Create Free Account</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
+
         </div>
 
-        <div className="h-px bg-dodger-900 w-full" />
+        <div className="h-px bg-pink-900/60 w-full" />
 
         {/* Bottom credits */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-dodger-300 gap-4">
-          <p>© {new Date().getFullYear()} جميع الحقوق محفوظة لمنصة مستر إسلام للرياضيات</p>
+        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-pink-300/70 gap-4">
+          <p className="flex items-center gap-1">
+            © {new Date().getFullYear()} All rights reserved to Yarin Mathematics Platform
+            <span className="text-pink-400">💕</span>
+          </p>
 
           {isAdmin && (
-            <Link to="/admin" className="text-dodger-400 hover:text-white font-bold transition flex items-center gap-1">
-              <span>👑 لوحة الأدمن والتحكم</span>
+            <Link to="/admin" className="text-pink-400 hover:text-pink-200 font-bold transition flex items-center gap-1.5 bg-pink-950/80 px-3 py-1.5 rounded-lg border border-pink-800/60">
+              <span>👑 Admin Dashboard</span>
             </Link>
           )}
         </div>
