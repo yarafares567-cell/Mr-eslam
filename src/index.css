@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-dark-pink: #1a0914;
+  --card-dark-pink: #2a0f21;
+  --accent-dark-pink: #d81b60;
+  --accent-pink-glow: #ff4081;
+  --light-pink-text: #fce4ec;
+  --border-pink: #880e4f;
+}
+
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg-dark-pink);
+  color: var(--light-pink-text);
 }
 
 body {
@@ -11,10 +22,27 @@ body {
   font-family: "IBM Plex Sans Arabic", sans-serif;
   direction: rtl;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-dark-pink);
+  color: var(--light-pink-text);
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark-pink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-pink);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dark-pink);
 }
 
 .smooth {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .flex-center-both {
@@ -28,6 +56,25 @@ body {
   padding-top: 5.5rem;
 }
 
+/* Dark Pink Design Accents & Glows */
+.pink-card {
+  background-color: var(--card-dark-pink);
+  border: 1px solid var(--border-pink);
+  box-shadow: 0 4px 20px rgba(216, 27, 96, 0.15);
+  border-radius: 1rem;
+}
+
+.pink-glow {
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.4);
+}
+
+.pink-gradient-text {
+  background: linear-gradient(135deg, #ff80ab, #d81b60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Floating Sticker Animations */
 @keyframes slideInLeft {
   from { transform: scaleY(0); opacity: 0; }
   to { transform: scaleY(1); opacity: 1; }
@@ -50,6 +97,45 @@ body {
   animation: float 14s ease-in-out infinite;
 }
 
+/* Decorative Sticker Styles */
+.sticker-item {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 8px rgba(216, 27, 96, 0.5));
+  animation: floatSticker 5s ease-in-out infinite alternate;
+}
+
+.sticker-sparkle {
+  top: 10%;
+  left: 5%;
+  font-size: 2rem;
+  animation-delay: 0s;
+}
+
+.sticker-heart {
+  top: 15%;
+  right: 6%;
+  font-size: 2.2rem;
+  animation-delay: 1.5s;
+}
+
+.sticker-ribbon {
+  bottom: 12%;
+  left: 8%;
+  font-size: 2rem;
+  animation-delay: 3s;
+}
+
+@keyframes floatSticker {
+  0% {
+    transform: translateY(0) rotate(-5deg) scale(1);
+  }
+  100% {
+    transform: translateY(-15px) rotate(8deg) scale(1.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -57,4 +143,3 @@ body {
     scroll-behavior: auto !important;
   }
 }
-
