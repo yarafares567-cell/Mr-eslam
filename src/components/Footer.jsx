@@ -151,19 +151,6 @@ export default function Footer() {
 
         <div className="h-px bg-pink-900/60 w-full" />
 
-        {/* Bottom credits */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-pink-300/70 gap-4">
-          <p className="flex items-center gap-1">
-            © {new Date().getFullYear()} All rights reserved to Yarin Mathematics Platform
-            <span className="text-pink-400">💕</span>
-          </p>
-
-          {isAdmin && (
-            <Link to="/admin" className="text-pink-400 hover:text-pink-200 font-bold transition flex items-center gap-1.5 bg-pink-950/80 px-3 py-1.5 rounded-lg border border-pink-800/60">
-              <span>👑 Admin Dashboard</span>
-            </Link>
-          )}
-        </div>
       </div>
     </footer>
   )
