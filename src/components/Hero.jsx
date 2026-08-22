@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Sparkles, ArrowRight, BookOpen, Heart, Star, Ribbon } from 'lucide-react'
+import { Sparkles, ArrowRight, BookOpen, Heart, Star } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -13,7 +13,7 @@ export default function Hero() {
         animate={{ y: [0, -12, 0], rotate: [-5, 5, -5] }} 
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-12 right-12 text-3xl pointer-events-none select-none drop-shadow-[0_0_10px_rgba(216,27,96,0.8)] z-10 hidden sm:block"
-      > </motion.div>
+      >
         🩷
       </motion.div>
 
@@ -38,32 +38,32 @@ export default function Hero() {
           
           {/* Left Column: Copy & Text */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="md:w-1/2 w-full space-y-6 text-center md:text-right"
+            className="md:w-1/2 w-full space-y-6 text-center md:text-left"
           >
             {/* Top Pill Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-950/80 border border-pink-700/60 text-pink-200 text-xs sm:text-sm font-bold shadow-md shadow-pink-950/50">
               <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
-              <span></span>Books Review 🌸</span>
+              <span>Book Reviews 🌸</span>
             </div>
 
             {/* Main Heading with Name Yarin */}
             <h1 className="font-khaled text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-             Share Your Opinions{' '}
+              Share Your Opinions with{' '}
               <span className="bg-gradient-to-r from-pink-400 via-rose-400 to-pink-500 bg-clip-text text-transparent block sm:inline drop-shadow-[0_2px_10px_rgba(216,27,96,0.4)]">
-                يارين
+                Yarin
               </span>
             </h1>
 
             {/* Subtitle Body Text */}
             <div className="space-y-3 font-ibm text-base sm:text-lg text-pink-100/90 max-w-2xl leading-relaxed">
               <p>
-                Say What You Want In Your Books And Share It With Us
+                Say what you want about your favorite books and share your thoughts with our community!
               </p>
               <p className="text-sm sm:text-base text-pink-300/70">
-                Be Respectful To Everyone Here And Respect People's Opinion
+                Be respectful to everyone here and honor each other's opinions 💕
               </p>
             </div>
 
@@ -73,16 +73,16 @@ export default function Hero() {
                 to="/register"
                 className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-600 via-rose-600 to-pink-700 hover:from-pink-700 hover:to-rose-800 text-white font-bold text-base shadow-lg shadow-pink-600/40 hover:shadow-pink-600/60 hover:scale-105 transition duration-300 flex items-center justify-center gap-2 border border-pink-400/30"
               >
-                <span>Be Honest</span>
-                <ArrowRight className="w-5 h-5 rotate-180" />
+                <span>Get Started</span>
+                <ArrowRight className="w-5 h-5" />
               </Link>
 
               <a
-                href="#courses"
+                href="#books"
                 className="w-full sm:w-auto px-8 py-4 rounded-2xl border-2 border-pink-800/80 hover:border-pink-500 text-pink-100 font-bold text-base bg-pink-950/40 hover:bg-pink-900/50 transition duration-300 flex items-center justify-center gap-2 shadow-md shadow-black/20"
               >
                 <BookOpen className="w-5 h-5 text-pink-400" />
-                <span>Share Your Books</span>
+                <span>Explore Books</span>
               </a>
             </div>
 
@@ -104,7 +104,7 @@ export default function Hero() {
                 <div className="w-full h-full rounded-full overflow-hidden border-4 border-pink-950 bg-pink-950">
                   <img
                     src="/MRV1.png"
-                    alt="يارين - منصة الرياضيات"
+                    alt="Yarin - Book Reviews"
                     className="w-full h-full object-cover object-top hover:scale-105 transition duration-500"
                     draggable="false"
                   />
@@ -121,8 +121,8 @@ export default function Hero() {
                   <Star className="w-6 h-6 fill-pink-400 text-pink-300" />
                 </div>
                 <div>
-                  <div className="text-xs text-pink-300/70">خبرة أكثر من</div>
-                  <div className="text-sm font-bold text-white">3 سنوات تدريس</div>
+                  <div className="text-xs text-pink-300/70">Top Rated</div>
+                  <div className="text-sm font-bold text-white">Book Reviews</div>
                 </div>
               </motion.div>
 
@@ -136,8 +136,8 @@ export default function Hero() {
                   <Heart className="w-6 h-6 fill-pink-500 text-pink-400" />
                 </div>
                 <div>
-                  <div className="text-xs text-pink-300/70">أكبر منصة رياضيات</div>
-                  <div className="text-sm font-bold text-white">شرح + امتحانات</div>
+                  <div className="text-xs text-pink-300/70">Active Community</div>
+                  <div className="text-sm font-bold text-white">Share & Connect</div>
                 </div>
               </motion.div>
 
