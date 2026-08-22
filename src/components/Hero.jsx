@@ -13,7 +13,7 @@ export default function Hero() {
         animate={{ y: [0, -12, 0], rotate: [-5, 5, -5] }} 
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-12 right-12 text-3xl pointer-events-none select-none drop-shadow-[0_0_10px_rgba(216,27,96,0.8)] z-10 hidden sm:block"
-      >
+      > </motion.div>
         🩷
       </motion.div>
 
